@@ -48,8 +48,3 @@ build:
   only:
     refs:
       - master
-
-release:
-  stage: release
-  script:
-    - /usr/local/bin/goreleaser
