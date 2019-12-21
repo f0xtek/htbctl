@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.5 2019-12-21
+
+## Bugfixes
+
+- Use docker image for goreleaser
+
 ## 1.2.4 2019-12-21
 
 ### Features

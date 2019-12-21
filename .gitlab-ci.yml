@@ -29,8 +29,12 @@ lint_code:
     - make lint
 
 build:
+  image: docker:stable
+  services:
+    - docker:dind
   stage: build
   script:
-    - curl -sL https://git.io/goreleaser | bash
+    - docker pull $GORELEASER_IMAGE
+    - docker run --rm --privileged -v $PWD:/go/src/gitlab.com/thesoy_sauce/htbctl -v /var/run/docker.sock:/var/run/docker.sock -w /go/src/gitlab.com/thesoy_sauce/htbctl -e GITLAB_TOKEN $GORELEASER_IMAGE release --rm-dist --release-notes=CHANGELOG.md
   only:
     - tags
