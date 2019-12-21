@@ -25,12 +25,12 @@ before_script:
 #     - make test
 
 lint_code:
-  stage: test:lint
+  stage: test
   script:
     - make lint
 
 release_candidate:
-  stage: build:rc
+  stage: build
   except:
     refs:
       - master
@@ -41,7 +41,7 @@ build:
   image: docker:stable
   services:
     - docker:dind
-  stage: build:release
+  stage: build
   script:
     - docker pull $GORELEASER_IMAGE
     - docker run --rm --privileged -v $PWD:/go/src/gitlab.com/thesoy_sauce/htbctl -v /var/run/docker.sock:/var/run/docker.sock -w /go/src/gitlab.com/thesoy_sauce/htbctl -e GITLAB_TOKEN $GORELEASER_IMAGE release --rm-dist --release-notes=CHANGELOG.md

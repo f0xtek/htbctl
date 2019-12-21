@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.2.1] 2019-12-21
+
+### Bugfixes
+
+- Fix .gitlab-ci syntax
+
 ## [1.2.0] 2019-12-21
 
 ### Bugfixes
