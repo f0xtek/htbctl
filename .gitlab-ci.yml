@@ -29,6 +29,9 @@ lint_code:
     - make lint
 
 release_candidate:
+  image: docker:stable
+  services:
+    - docker:dind
   stage: build
   except:
     refs:

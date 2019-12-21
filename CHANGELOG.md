@@ -6,6 +6,7 @@
 
 - Fix pipeline - remove go mod from before_script
 - Fix pipeline - remove download of golint to lint_code job
+- Fix pipeline - use docker:dind for release candidate job
 
 ## [1.2.2] 2019-12-21
 
