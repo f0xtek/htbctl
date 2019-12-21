@@ -15,7 +15,7 @@ variables:
   GORELEASER_IMAGE: goreleaser/goreleaser:latest
 
 before_script:
-  - export VERSION=$(grep -m 1 -Po '(?<=##\s\[)\d+\.\d+\.\d+' CHANGELOG.md)
+  - export VERSION=$(perl -ne 'print if /(?<=##\s)\d+\.\d+\.\d+/' CHANGELOG.md | awk 'NR==1 {print $2}')
 
 # unit_tests:
 #   stage: test:unit
@@ -28,25 +28,9 @@ lint_code:
     - go get -u golang.org/x/lint/golint
     - make lint
 
-release_candidate:
-  image: docker:stable
-  services:
-    - docker:dind
-  stage: build
-  except:
-    refs:
-      - master
-  script:
-    - docker run --rm --privileged -v $PWD:/go/src/gitlab.com/thesoy_sauce/htbctl -v /var/run/docker.sock:/var/run/docker.sock -w /go/src/gitlab.com/thesoy_sauce/htbctl -e GITLAB_TOKEN $GORELEASER_IMAGE release --rm-dist --snapshot --release-notes=CHANGELOG.md
-
 build:
-  image: docker:stable
-  services:
-    - docker:dind
   stage: build
   script:
-    - docker pull $GORELEASER_IMAGE
-    - docker run --rm --privileged -v $PWD:/go/src/gitlab.com/thesoy_sauce/htbctl -v /var/run/docker.sock:/var/run/docker.sock -w /go/src/gitlab.com/thesoy_sauce/htbctl -e GITLAB_TOKEN $GORELEASER_IMAGE release --rm-dist --release-notes=CHANGELOG.md
+    - curl -sL https://git.io/goreleaser | bash
   only:
-    refs:
-      - master
+    - tags

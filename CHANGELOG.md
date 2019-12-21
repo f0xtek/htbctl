@@ -1,6 +1,14 @@
 # Changelog
 
-## [1.2.3] 2019-12-21
+## 1.2.4 2019-12-21
+
+### Features
+
+- Simplify pipeline
+- Add release config to goreleaser
+- Add ci script
+
+## 1.2.3 2019-12-21
 
 ### Bugfixes
 
@@ -8,19 +16,19 @@
 - Fix pipeline - remove download of golint to lint_code job
 - Fix pipeline - use docker:dind for release candidate job
 
-## [1.2.2] 2019-12-21
+## 1.2.2 2019-12-21
 
 ### Bugfixes
 
 - Fix .gitlab-ci syntax
 
-## [1.2.1] 2019-12-21
+## 1.2.1 2019-12-21
 
 ### Bugfixes
 
 - Fix .gitlab-ci syntax
 
-## [1.2.0] 2019-12-21
+## 1.2.0 2019-12-21
 
 ### Bugfixes
 
@@ -30,13 +38,13 @@
 
 - Add GitLab-CI pipeline
 
-## [1.1.0] 2019-12-21
+## 1.1.0 2019-12-21
 
 ### Features
 
 - Add goreleaser to project
 
-## [1.0.0] 2019-12-21
+## 1.0.0 2019-12-21
 
 ### Features
 
