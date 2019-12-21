@@ -15,8 +15,6 @@ variables:
   GORELEASER_IMAGE: goreleaser/goreleaser:latest
 
 before_script:
-  - make mod
-  - go get -u golang.org/x/lint/golint
   - export VERSION=$(grep -m 1 -Po '(?<=##\s\[)\d+\.\d+\.\d+' CHANGELOG.md)
 
 # unit_tests:
@@ -27,6 +25,7 @@ before_script:
 lint_code:
   stage: test
   script:
+    - go get -u golang.org/x/lint/golint
     - make lint
 
 release_candidate:

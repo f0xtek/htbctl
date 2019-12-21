@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.3] 2019-12-21
+
+### Bugfixes
+
+- Fix pipeline - remove go mod from before_script
+- Fix pipeline - remove download of golint to lint_code job
+
 ## [1.2.2] 2019-12-21
 
 ### Bugfixes
