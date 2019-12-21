@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.7 2019-12-21
+
+### Bugfixes
+
+- Change goreleaser project name
+
 ## 1.2.6 2019-12-21
 
 ### Bugfixes
