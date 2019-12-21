@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.6 2019-12-21
+
+### Bugfixes
+
+- Fix release name in goreleaser config
+
 ## 1.2.5 2019-12-21
 
 ## Bugfixes
