@@ -1,0 +1,42 @@
+image: golang:1.13
+
+cache:
+  paths:
+    - /go/src/github.com
+    - /go/src/golang.org
+    - /go/src/google.golang.org
+    - /go/src/gopkg.in
+
+stages:
+  - test
+  - build
+  - release
+
+before_script:
+  - make mod
+  - go get -u golang.org/x/lint/golint
+  - export VERSION=$(grep -m 1 -Po '(?<=##\s\[)\d+\.\d+\.\d+' CHANGELOG.md)
+  - curl -sfL https://install.goreleaser.com/github.com/goreleaser/goreleaser/sh | bash
+
+unit_tests:
+  stage: test:unit
+  script:
+    - make test
+
+lint_code:
+  stage: test:lint
+  script:
+    - make lint
+
+build:
+  stage: build
+  script:
+    - make
+  artifacts:
+    untracked: true
+    expire_in: 30 days
+
+release:
+  stage: release
+  script:
+    - /usr/local/bin/goreleaser
